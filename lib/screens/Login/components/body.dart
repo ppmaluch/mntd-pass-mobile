@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mntd_mobile/screens/home.dart';
+import 'package:mntd_mobile/utils/constants.dart';
 import 'background.dart';
 import 'package:mntd_mobile/Screens/Signup/signup_screen.dart';
 import 'package:mntd_mobile/components/already_have_an_account_acheck.dart';
@@ -44,7 +45,7 @@ class Body extends StatelessWidget {
               text: "LOGIN",
               color: Colors.green,
               press: () {
-                loginService.login("mario", "msda930313@17");
+                loginService.login(USER_TEST, PASS_TEST);
                 Navigator.of(context).pushReplacement(Home.route());
               },
             ),

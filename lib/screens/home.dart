@@ -3,13 +3,14 @@ import 'package:mntd_mobile/components/menu_and_search.dart';
 import 'package:mntd_mobile/models/secret_model.dart';
 import 'package:mntd_mobile/providers/SecretCardProvider.dart';
 import 'package:mntd_mobile/providers/ThemeSettingProvider.dart';
+import 'package:mntd_mobile/screens/Secret/secret_carousel.dart';
 import 'package:mntd_mobile/services/secrets_service.dart';
 import 'package:mntd_mobile/utils/themes/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'SecretsList/components/card_secret.dart';
-import 'SecretsList/components/category_secrets_list.dart';
+import 'Secret/add_secrets.dart';
+import 'Secret/components/category_secrets_list.dart';
 
 class Home extends StatefulWidget {
   static Route<dynamic> route() {
@@ -87,9 +88,9 @@ class _HomeState extends State<Home> {
                 ? search(onSearchCancel, searching, _searchController, darkMode)
                 : navBar(startSearching, darkMode),
             // SecretsPageScreen name text when will be show total of secrets by username
-            SizedBox(
-              height: 15,
-            ),
+            // SizedBox(
+            //   height: 10,
+            // ),
 
             Padding(
               padding: const EdgeInsets.all(15),
@@ -127,7 +128,7 @@ class _HomeState extends State<Home> {
                       child: Column(
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            padding: EdgeInsets.symmetric(horizontal: 15.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -137,7 +138,7 @@ class _HomeState extends State<Home> {
                                       color: darkMode
                                           ? GFColors.DARK
                                           : GFColors.LIGHT,
-                                      fontSize: 46,
+                                      fontSize: 30,
                                       fontFamily: "Calibre-Semibold",
                                       letterSpacing: 1.0),
                                 ),
@@ -149,39 +150,52 @@ class _HomeState extends State<Home> {
                                         ? GFColors.DARK
                                         : GFColors.LIGHT,
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => AddSecretPage(
+                                          darkmode: darkMode,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          // SizedBox(
+                          //   height: 15,
+                          // ),
                           // List of categories
                           Categorylist(
                             darkMode: darkMode,
                           ),
-                          SizedBox(
-                            height: 20,
+                          // SizedBox(
+                          //   height: 15,
+                          // ),
+                          // Secrets Card Carusel
+                          SecretCardsCarousel(
+                            darkMode: darkMode,
                           ),
                           // Stack of CardViews for a secrets by username
-                          Stack(
-                            children: <Widget>[
-                              CardScrollWidget(
-                                secrets: secrets.allSecrets,
-                                currentPage: currentPage,
-                              ),
-                              Positioned.fill(
-                                  child: PageView.builder(
-                                itemCount: secrets.getSecretsdLength(),
-                                controller: controller,
-                                reverse: true,
-                                itemBuilder: (context, index) {
-                                  return Container();
-                                },
-                              ))
-                            ],
-                          )
+                          // Stack(
+                          //   children: <Widget>[
+                          //     CardScrollWidget(
+                          //       secrets: secrets.allSecrets,
+                          //       currentPage: currentPage,
+                          //     ),
+                          //     Positioned.fill(
+                          //         child: PageView.builder(
+                          //       itemCount: secrets.getSecretsdLength(),
+                          //       controller: controller,
+                          //       reverse: true,
+                          //       itemBuilder: (context, index) {
+                          //         return Container();
+                          //       },
+                          //     ))
+                          //   ],
+                          // )
                         ],
                       ),
                     ),
@@ -191,9 +205,9 @@ class _HomeState extends State<Home> {
                 : SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
-                          height: 20,
-                        ),
+                        // SizedBox(
+                        //   height: 15,
+                        // ),
                         Container(
                           child: FutureBuilder(
                             future: secretsService.getSecrets('kalix'),
@@ -209,7 +223,7 @@ class _HomeState extends State<Home> {
                                     children: <Widget>[
                                       Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 20.0),
+                                            horizontal: 15.0),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -220,7 +234,7 @@ class _HomeState extends State<Home> {
                                                   color: darkMode
                                                       ? GFColors.DARK
                                                       : GFColors.LIGHT,
-                                                  fontSize: 46,
+                                                  fontSize: 30,
                                                   fontFamily:
                                                       "Calibre-Semibold",
                                                   letterSpacing: 1.0),
@@ -238,34 +252,37 @@ class _HomeState extends State<Home> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
+                                      // SizedBox(
+                                      //   height: 15,
+                                      // ),
                                       // List of categories
                                       Categorylist(
                                         darkMode: darkMode,
                                       ),
-                                      SizedBox(
-                                        height: 20,
+                                      // SizedBox(
+                                      //   height: 15,
+                                      // ),
+                                      SecretCardsCarousel(
+                                        darkMode: darkMode,
                                       ),
                                       // Stack of CardViews for a secrets by username
-                                      Stack(
-                                        children: <Widget>[
-                                          CardScrollWidget(
-                                            secrets: secrets,
-                                            currentPage: currentPage,
-                                          ),
-                                          Positioned.fill(
-                                              child: PageView.builder(
-                                            itemCount: secrets.length,
-                                            controller: controller,
-                                            reverse: true,
-                                            itemBuilder: (context, index) {
-                                              return Container();
-                                            },
-                                          ))
-                                        ],
-                                      )
+                                      // Stack(
+                                      //   children: <Widget>[
+                                      //     CardScrollWidget(
+                                      //       secrets: secrets,
+                                      //       currentPage: currentPage,
+                                      //     ),
+                                      //     Positioned.fill(
+                                      //         child: PageView.builder(
+                                      //       itemCount: secrets.length,
+                                      //       controller: controller,
+                                      //       reverse: true,
+                                      //       itemBuilder: (context, index) {
+                                      //         return Container();
+                                      //       },
+                                      //     ))
+                                      //   ],
+                                      // )
                                     ],
                                   ),
                                 );

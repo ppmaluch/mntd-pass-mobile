@@ -7,14 +7,13 @@ class LoginService {
   final String authUrl = "$BASE_URL/auth";
 
   Future<User> login(String username, String password) async {
-    http.Response res = await http
-        .post(authUrl, body: {"username": username, "password": password});
+    http.Response res = await http.post(authUrl,
+        body: jsonEncode({"username": username, "password": password}),
+        headers: {'Content-Type': 'application/json'});
 
     if (res.statusCode == 200) {
       var jsonResponse = jsonDecode(res.body);
-      var data = jsonResponse['data'];
-      var user = User.fromJson(data);
-      print(user);
+      var user = User.fromJson(jsonResponse);
       return user;
     } else {
       throw 'Can`t login';

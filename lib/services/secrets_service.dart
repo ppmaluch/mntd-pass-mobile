@@ -21,4 +21,25 @@ class SecretsService {
       throw 'Can`t get secrets';
     }
   }
+
+  Future<Secret> postSecret(String username, String name, String value,
+      String category, String img) async {
+    var res = await http.post(allSecretsUrl,
+        body: jsonEncode({
+          "username": username,
+          "name": name,
+          "value": value,
+          "category": category
+        }),
+        headers: {'Content-Type': 'application/json'});
+    if (res.statusCode == 201) {
+      var jsonResponse = jsonDecode(res.body);
+      jsonResponse['img'] = img;
+      var secret = Secret.fromJson(jsonResponse);
+
+      return secret;
+    } else {
+      throw "Can`t not create a secrets";
+    }
+  }
 }

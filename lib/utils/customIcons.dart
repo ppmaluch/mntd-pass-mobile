@@ -10,5 +10,5 @@ Map<String, String> categoryItems = {
   'payments': 'assets/images/pyments.png',
   'socials': 'assets/images/pyments.png',
   'services': 'assets/images/personal.png',
-  'default': 'assets/images/lock1.jpg'
+  'others': 'assets/images/lock1.jpg'
 };

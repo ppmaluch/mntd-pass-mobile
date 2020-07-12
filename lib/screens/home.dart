@@ -164,38 +164,16 @@ class _HomeState extends State<Home> {
                               ],
                             ),
                           ),
-                          // SizedBox(
-                          //   height: 15,
-                          // ),
+
                           // List of categories
                           Categorylist(
                             darkMode: darkMode,
                           ),
-                          // SizedBox(
-                          //   height: 15,
-                          // ),
+
                           // Secrets Card Carusel
                           SecretCardsCarousel(
                             darkMode: darkMode,
                           ),
-                          // Stack of CardViews for a secrets by username
-                          // Stack(
-                          //   children: <Widget>[
-                          //     CardScrollWidget(
-                          //       secrets: secrets.allSecrets,
-                          //       currentPage: currentPage,
-                          //     ),
-                          //     Positioned.fill(
-                          //         child: PageView.builder(
-                          //       itemCount: secrets.getSecretsdLength(),
-                          //       controller: controller,
-                          //       reverse: true,
-                          //       itemBuilder: (context, index) {
-                          //         return Container();
-                          //       },
-                          //     ))
-                          //   ],
-                          // )
                         ],
                       ),
                     ),
@@ -252,37 +230,13 @@ class _HomeState extends State<Home> {
                                           ],
                                         ),
                                       ),
-                                      // SizedBox(
-                                      //   height: 15,
-                                      // ),
                                       // List of categories
                                       Categorylist(
                                         darkMode: darkMode,
                                       ),
-                                      // SizedBox(
-                                      //   height: 15,
-                                      // ),
                                       SecretCardsCarousel(
                                         darkMode: darkMode,
                                       ),
-                                      // Stack of CardViews for a secrets by username
-                                      // Stack(
-                                      //   children: <Widget>[
-                                      //     CardScrollWidget(
-                                      //       secrets: secrets,
-                                      //       currentPage: currentPage,
-                                      //     ),
-                                      //     Positioned.fill(
-                                      //         child: PageView.builder(
-                                      //       itemCount: secrets.length,
-                                      //       controller: controller,
-                                      //       reverse: true,
-                                      //       itemBuilder: (context, index) {
-                                      //         return Container();
-                                      //       },
-                                      //     ))
-                                      //   ],
-                                      // )
                                     ],
                                   ),
                                 );
